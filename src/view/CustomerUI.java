@@ -5,8 +5,7 @@ import core.Helper;
 import entity.Customer;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class CustomerUI extends JFrame {
     private JPanel container;
@@ -22,13 +21,10 @@ public class CustomerUI extends JFrame {
     private JLabel lbl_customer_address;
     private JTextArea tarea_customer_address;
     private JButton btn_customer_save;
-    private Customer customer;
-    private CustomerController customerController;
 
 
     public CustomerUI(Customer customer) {
-        this.customer=customer;
-        this.customerController=new CustomerController();
+        CustomerController customerController = new CustomerController();
         this.add(container);
         this.setTitle("Müşteri Ekle/Düzenle");
         this.setSize(300,500);
@@ -38,7 +34,7 @@ public class CustomerUI extends JFrame {
 
         this.cmb_customer_type.setModel(new javax.swing.DefaultComboBoxModel<>(Customer.TYPE.values()));
 
-        if (this.customer.getId()==0){
+        if (customer.getId()==0){
             this.lbl_title.setText("Müşteri ekle");
 
         }else{

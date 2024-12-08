@@ -2,7 +2,7 @@ package dao;
 
 import core.Database;
 import entity.Customer;
-import entity.User;
+
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CustomerDao {
-    private Connection connection;
+    private final Connection connection;
 
 
 
