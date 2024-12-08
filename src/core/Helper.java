@@ -1,8 +1,6 @@
 package core;
 
 import javax.swing.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Helper {
     // helper (email valuemin,email controller,field controller)
@@ -27,26 +25,29 @@ public class Helper {
     // Is the text field an empty controller?
     // tek bir area control eder.
     public static boolean isFieldEmpty(JTextField field){
+
         return field.getText().trim().isEmpty();
     }
 
     //formları kontrol etmek amacıyla(birden fazla alanı kontrol eder)
     public static boolean isFieldListEmpty(JTextField[] fields){
         for(JTextField field : fields){
-            if(!isFieldEmpty(field)) return true;
+            if(isFieldEmpty(field)) return true;
         }
         return false;
     }
 
-    public static boolean isEmailValid(String email){
-            //  @ olucak, @ bundan önce bir değer alması lazım, .com vs uzantıları olması lazım
-        if(email == null || email.trim().isEmpty()) return false;
+    public static boolean isEmailValid(String mail){
+            //  @ olucak, @ bundan önce bir
+        //  +
+        //  değer alması lazım, .com vs uzantıları olması lazım
+        if(mail == null || mail.trim().isEmpty()) return true;
 
              // @ kontrolü
-        if(email.contains("@")) return false;
+        if(!mail.contains("@")) return false;
 
             // emaili ikiye ayırarak kontrol sağlama
-        String[] parts=email.split("@");
+        String[] parts=mail.split("@");
 
             // ikiye ayrılmadıysa false
         if(parts.length!=2) return false;
@@ -79,32 +80,31 @@ public class Helper {
 
     public static void showMsg(String message){
         String msg;
+        String title;
         optionPaneDialogTR();
-        String title = switch (message) {
+
+         switch (message) {
             case "fill" -> {
                 msg = "lütfen bir alan doldurunuz";
-                yield "Hata";
+                title ="Hata";
             }
             case "done" -> {
                 msg = "işlem başarılı! ";
-                yield "Sonuç";
+                title ="Sonuç";
             }
             case "error" -> {
                 msg = "bir hata oluştu !";
-                yield "Hata";
+                title ="Hata";
             }
             default -> {
                 msg = message;
-                yield "Hata";
+                title ="Hata";
             }
-        };
+        }
+        JOptionPane.showMessageDialog(null, msg, title , JOptionPane.INFORMATION_MESSAGE);
 
-        JOptionPane.showMessageDialog(null,"eposta geçersiz","Hata",JOptionPane.INFORMATION_MESSAGE);
+
     }
-
-
-
-
 
 
 }

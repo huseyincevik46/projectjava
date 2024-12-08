@@ -3,7 +3,7 @@ package entity;
 public class User {
     private int id;
     private String name;
-    private String email;
+    private String mail;
     private String password;
 
     public User() {
@@ -28,11 +28,11 @@ public class User {
     }
 
     public String getEmail() {
-        return email;
+        return mail;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.mail = mail;
     }
 
     public String getPassword() {
@@ -48,7 +48,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
+                ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
